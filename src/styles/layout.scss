@@ -1,0 +1,34 @@
+.app_wrapper {
+    height: 100vh;
+    overflow: hidden;
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        height: 60px;
+        color: #fff;
+        background-color: #001529;
+    }
+    .header_left {
+        font-size: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .header_logo {
+            width: 54px;
+            margin-right: 5px;
+        }
+    }
+    .header_right {
+        display: flex;
+        align-items: center;
+        .header_avatar {
+            width: 36px;
+            border-radius: 10px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+    }
+}
