@@ -1,10 +1,10 @@
 {
     "name": "yc-admin",
     "private": true,
-    "version": "0.0.0",
+    "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite --host --port 3200",
+        "serve": "vite --host --port 3200",
         "build": "tsc && vite build",
         "preview": "vite preview"
     },
@@ -16,6 +16,7 @@
         "react-redux": "^7.2.8",
         "react-router-dom": "^6.3.0",
         "redux": "^4.1.2",
+        "redux-thunk": "^2.4.2",
         "reset-css": "^5.0.1"
     },
     "devDependencies": {

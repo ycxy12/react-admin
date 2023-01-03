@@ -1,43 +1,60 @@
-import React, { useState } from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import type { MenuProps } from 'antd';
-import { Layout, Menu, theme } from 'antd';
-
+import { Layout, Menu, } from 'antd';
+import routes from "@/router/pages"
 
 const { Sider } = Layout;
 
-const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-    (icon, index) => {
-        const key = String(index + 1);
-
-        return {
-            key: `sub${key}`,
-            icon: React.createElement(icon),
-            label: `subnav ${key}`,
-
-            children: new Array(4).fill(null).map((_, j) => {
-                const subKey = index * 4 + j + 1;
-                return {
-                    key: subKey,
-                    label: `option${subKey}`,
-                };
-            }),
-        };
-    },
-);
 
 const Sidebar = () => {
+    //展开 收起
     const [collapsed, setCollapsed] = useState(false);
-    const { token: { colorBgContainer } } = theme.useToken();
+    // 路由
+    const [router, setRouter] = useState(routes)
+
+    //设置路由key 为跳转地址
+    const setKeyPath = (item: any) => {
+        item.children.forEach((element: any) => {
+            element['key'] = item.key + '/' + element.path
+            if (element.children) {
+                setKeyPath(element)
+            }
+        });
+    }
+    router.forEach((item: any) => {
+        item['key'] = item.path
+        if (item.children) {
+            setKeyPath(item)
+        }
+    })
+
+    // 选择的菜单
+    const [selectKeys, setSelectKeys] = useState<string[]>([])
+    // 展开 的菜单
+    const [openkeys, setOpenKeys] = useState<string[]>([])
+    // 路由导航
+    const navigate = useNavigate()
+
+    // 点击菜单事件
+    const handlerMenu: MenuProps['onClick'] = e => {
+        setOpenKeys([e.key])
+        setSelectKeys([e.key])
+        // 路由跳转
+        navigate(e.key)
+    };
+
+
     return (
         <Sider width={200} collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
             <Menu
                 mode="inline"
                 theme="dark"
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
+                defaultSelectedKeys={selectKeys}
+                defaultOpenKeys={openkeys}
                 style={{ height: '100%', borderRight: 0 }}
-                items={items2}
+                items={router}
+                onClick={handlerMenu}
             />
         </Sider>
     )

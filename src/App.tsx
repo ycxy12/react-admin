@@ -1,17 +1,19 @@
-import { Outlet, useRoutes } from "react-router-dom"
-import { useState } from "react"
+import { useRoutes } from "react-router-dom"
+import { ConfigProvider } from 'antd';
 import router from "./router"
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
   const outlet = useRoutes(router)
+
   return (
-    <div className="App">
-      {/* 老式写法 */}
-      {/* <Outlet></Outlet> */}
-      {/* 新写法 */}
+    <ConfigProvider theme={{
+      token: {
+        colorPrimary: '#b14449',
+        colorPrimaryHover: "#c75b59"
+      },
+    }}>
       {outlet}
-    </div>
+    </ConfigProvider>
   )
 }
 
