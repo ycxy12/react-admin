@@ -1,0 +1,101 @@
+/* 需要自定义覆盖的样式 */
+body {
+    background-color: #ffffff !important;
+    #driver-highlighted-element-stage {
+        background-color: #fff !important;
+    }
+}
+
+/* login container（先固定样式） */
+.login-container {
+    background-color: #eeeeee !important;
+    .login-box {
+        background-color: hsl(0deg 0% 100% / 80%) !important;
+        .login-form {
+            background-color: transparent !important;
+            box-shadow: 2px 3px 7px rgb(0 0 0 / 20%) !important;
+            .login-logo {
+                .logo-text {
+                    color: #475768 !important;
+                }
+            }
+            .login-btn {
+                .ant-btn-default {
+                    color: #606266 !important;
+                }
+            }
+        }
+    }
+}
+
+/* container */
+.container {
+    /* sider */
+    .ant-layout-sider {
+        background: #001529;
+        border-right: 1px solid #e4e7ed !important;
+        transition: all 0.2s;
+        &-children {
+            height: 100%;
+        }
+        .ant-menu {
+            &::-webkit-scrollbar {
+                background-color: #001529 !important;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: #41444b !important;
+            }
+        }
+        .logo-box {
+            border-bottom: 1px solid #010b14 !important;
+        }
+    }
+
+    /* layout */
+    .ant-layout {
+        background-color: #f0f2f5 !important;
+        .tabs,
+        .footer,
+        .card {
+            background-color: #ffffff !important;
+            border-color: #e4e7ed !important;
+        }
+        .ant-layout-header {
+            height: 55px;
+            padding: 0 40px 0 20px;
+            background-color: #ffffff !important;
+            border-color: #f6f6f6 !important;
+            .icon-style,
+            .username {
+                color: rgba(0, 0, 0, 0.85) !important;
+            }
+        }
+        .footer {
+            a {
+                color: rgba(0, 0, 0, 0.85) !important;
+            }
+        }
+        .card {
+            box-shadow: 0 0 12px #0000000d !important;
+            .text {
+                color: #585858 !important;
+            }
+        }
+        .ant-layout-content {
+            &::-webkit-scrollbar {
+                background-color: #f0f2f5 !important;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: #dddee0 !important;
+            }
+            .card {
+                &::-webkit-scrollbar {
+                    background-color: #ffffff !important;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: #dddee0 !important;
+                }
+            }
+        }
+    }
+}
