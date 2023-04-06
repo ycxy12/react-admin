@@ -1,6 +1,7 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 import { resolve } from "path"
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -25,7 +26,14 @@ export default defineConfig({
             },
         },
     },
-    plugins: [react()],
+    plugins: [
+        react(),
+        // * 使用 svg 图标
+        createSvgIconsPlugin({
+            iconDirs: [resolve(process.cwd(), "src/assets/icons")],
+            symbolId: "icon-[dir]-[name]",
+        }),
+    ],
     esbuild: {
         pure: ["console.log", "debugger"], // 删除生产环境 console
     },

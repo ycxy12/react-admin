@@ -5,7 +5,7 @@ import { RouteObject } from "@/router/interface"
 // 数据大屏模块
 const dataScreenRouter: Array<RouteObject> = [
     {
-        path: "/dataScreen/index",
+        path: "/dataScreen",
         element: lazyLoad(React.lazy(() => import("@/pages/dataScreen/index"))),
         meta: {
             requiresAuth: true,
